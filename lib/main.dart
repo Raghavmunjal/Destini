@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'story_brain.dart';
+
+StoryBrain sb=StoryBrain();
 
 void main() {
   runApp(Destini());
@@ -22,19 +25,18 @@ class StoryPage extends StatefulWidget {
 
 class _StoryPageState extends State<StoryPage> {
 
-  String str='';
-
-
-  Expanded choiceButton(String str,Color color){
+  Expanded choiceButton(String str,Color color,int c){
     return Expanded(
 
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(vertical: 12,horizontal: 8),
           child: TextButton(
             onPressed: (){
-
+                setState(() {
+                  sb.nextStory(c);
+                });
             },
-            child: Text('$str',style: TextStyle(color: Colors.white,fontSize: 20),),
+            child: Text('$str',textAlign:TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 20),),
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(color)
             ),
@@ -63,11 +65,13 @@ class _StoryPageState extends State<StoryPage> {
             children: [
               Expanded(
                 flex: 5,
-                  child: Center(child: Text('Question Text will Go here',style: TextStyle(fontSize: 25),))
+                  child: Center(child: Text(sb.getStory(),style: TextStyle(fontSize: 25),))
 
               ),
-              choiceButton('Choice 1', Colors.red),
-              choiceButton('Choice 2', Colors.blue),
+              choiceButton(sb.getChoice1(), Colors.red,1),
+
+              sb.isButtonVisible() ? choiceButton(sb.getChoice2(), Colors.blue,2) : Text(''),
+              
 
             ],
           ),
