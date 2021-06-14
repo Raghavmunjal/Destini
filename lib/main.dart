@@ -35,10 +35,23 @@ class _StoryPageState extends State<StoryPage> {
         constraints: BoxConstraints.expand(),
         child: SafeArea(
           child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text('Hello'),
-              Text('Hello'),
-              Text('Hello'),
+              Expanded(
+                flex: 5,
+                  child: Center(child: Text('Question Text will Go here'))
+
+              ),
+              Expanded(
+
+                  child: Center(child: Text('Choice 1'))
+
+              ),
+              Expanded(
+
+                  child: Center(child: Text('Choice 2'))
+
+              ),
             ],
           ),
         ),
