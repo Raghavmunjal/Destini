@@ -21,6 +21,30 @@ class StoryPage extends StatefulWidget {
 }
 
 class _StoryPageState extends State<StoryPage> {
+
+  String str='';
+
+
+  Expanded choiceButton(String str,Color color){
+    return Expanded(
+
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextButton(
+            onPressed: (){
+
+            },
+            child: Text('$str',style: TextStyle(color: Colors.white,fontSize: 20),),
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(color)
+            ),
+
+          ),
+        )
+
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,19 +63,12 @@ class _StoryPageState extends State<StoryPage> {
             children: [
               Expanded(
                 flex: 5,
-                  child: Center(child: Text('Question Text will Go here'))
+                  child: Center(child: Text('Question Text will Go here',style: TextStyle(fontSize: 25),))
 
               ),
-              Expanded(
+              choiceButton('Choice 1', Colors.red),
+              choiceButton('Choice 2', Colors.blue),
 
-                  child: Center(child: Text('Choice 1'))
-
-              ),
-              Expanded(
-
-                  child: Center(child: Text('Choice 2'))
-
-              ),
             ],
           ),
         ),
